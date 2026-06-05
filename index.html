@@ -1391,6 +1391,34 @@
       media.querySelectorAll('source').forEach(source => source.addEventListener('error', markMissing));
     }
   });
+
+
+  // === Stop videos when carousel slides ===
+function pauseVideosInContainer(container) {
+  const videos = container.querySelectorAll('video');
+  videos.forEach(video => {
+    video.pause();
+    video.currentTime = 0; // optional: reset to start
+  });
+}
+
+document.querySelectorAll('.carousel').forEach(carousel => {
+  carousel.addEventListener('slid.bs.carousel', function (e) {
+    const previousSlide = e.relatedTarget; 
+    const allSlides = this.querySelectorAll('.carousel-item');
+    allSlides.forEach(slide => {
+      if (slide !== e.relatedTarget) {
+        pauseVideosInContainer(slide);
+      }
+    });
+  });
+});
+
+const projectModalElem = document.getElementById('projectModal');
+projectModalElem.addEventListener('hidden.bs.modal', function () {
+  // Pause all videos inside the modal body (including subproject carousels)
+  pauseVideosInContainer(document.getElementById('projectModal'));
+});
 </script>
 </body>
 </html>
