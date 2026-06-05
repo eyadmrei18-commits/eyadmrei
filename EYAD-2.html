@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohamad Eyad Mrei | BIM Structural Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <style>
+    :root {
+      --teal: #0f3d5e;
+      --teal-dark: #08283f;
+      --teal-light: #2f6f96;
+      --teal-pale: #e4eef5;
+      --sidebar-bg: #040b14;
+      --body-bg: #f5f8fd;
+      --text-dark: #272829;
+      --text-muted: #656565;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--body-bg);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── SIDEBAR ── */
+    #sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 300px; height: 100vh;
+      background: var(--sidebar-bg);
+      overflow-y: auto;
+      z-index: 9999;
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    .sidebar-avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 4px solid var(--teal);
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; color: #fff; font-weight: 700;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .sidebar-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+      display: block;
+    }
+
+    #sidebar h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: #fff; text-align: center; margin-bottom: 6px;
+    }
+
+    #sidebar .tagline {
+      color: var(--teal-light); font-size: 0.82rem;
+      text-align: center; margin-bottom: 20px;
+    }
+
+    .sidebar-socials { display: flex; gap: 10px; margin-bottom: 28px; }
+
+    .sidebar-socials a {
+      color: #aaa; width: 36px; height: 36px;
+      border-radius: 50%; border: 1px solid #333;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; transition: all .3s; text-decoration: none;
+    }
+
+    .sidebar-socials a:hover { color: var(--teal); border-color: var(--teal); }
+
+    #sidebar nav { width: 100%; }
+    #sidebar nav ul { list-style: none; padding: 0; }
+    #sidebar nav ul li { margin: 4px 0; }
+
+    #sidebar nav ul li a {
+      display: flex; align-items: center; gap: 10px;
+      color: #a8a9b4; font-family: 'Raleway', sans-serif;
+      font-size: 0.93rem; font-weight: 500;
+      padding: 10px 16px; border-radius: 6px;
+      text-decoration: none; transition: all .3s;
+    }
+
+    #sidebar nav ul li a i { font-size: 1.05rem; color: var(--teal-light); }
+
+    #sidebar nav ul li a:hover,
+    #sidebar nav ul li a.active {
+      color: #fff; background: rgba(15,61,94,.15);
+    }
+
+    #sidebar nav ul li a.active { border-left: 3px solid var(--teal); }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      position: fixed; top: 15px; left: 15px;
+      z-index: 10000; background: var(--teal);
+      border: none; border-radius: 6px; color: #fff;
+      width: 40px; height: 40px; font-size: 1.2rem;
+      align-items: center; justify-content: center; cursor: pointer;
+    }
+
+    /* ── MAIN ── */
+    #main { margin-left: 300px; }
+
+    section { padding: 80px 60px; border-bottom: 1px solid #e9ecef; }
+
+    .section-title {
+      font-family: 'Raleway', sans-serif; font-size: 2rem;
+      font-weight: 700; color: var(--text-dark); margin-bottom: 6px;
+    }
+
+    .section-title::after {
+      content: ''; display: block; width: 50px; height: 3px;
+      background: var(--teal); margin-top: 8px; border-radius: 2px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem; color: var(--text-muted);
+      margin-bottom: 40px; max-width: 600px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--sidebar-bg);
+      display: flex; align-items: center;
+      padding: 80px 60px; position: relative; overflow: hidden;
+    }
+
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("assets/hero-cover.jpeg") center center / cover no-repeat;
+      opacity: .5;
+      filter: brightness(1.55) contrast(.9) saturate(.78);
+    }
+
+    #hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(4,11,20,.88), rgba(4,11,20,.58) 48%, rgba(4,11,20,.36));
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    #hero h2 {
+      font-family: 'Raleway', sans-serif; font-size: 3.2rem;
+      font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 12px;
+    }
+
+    #hero p.typed-wrap {
+      font-size: 1.2rem; color: var(--teal-light);
+      margin-bottom: 28px; font-family: 'Raleway', sans-serif;
+    }
+
+    #hero p.typed-wrap span { color: #fff; font-weight: 600; }
+
+    .hero-desc {
+      color: #adb5bd; font-size: 0.95rem;
+      max-width: 540px; line-height: 1.8; margin-bottom: 36px;
+    }
+
+    .btn-hero {
+      background: var(--teal); color: #fff;
+      padding: 13px 32px; border-radius: 30px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all .3s; font-family: 'Raleway', sans-serif;
+      border: 2px solid var(--teal);
+    }
+
+    .btn-hero:hover { background: transparent; color: var(--teal); }
+
+    .btn-hero-outline {
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,.3);
+      padding: 13px 32px; border-radius: 30px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all .3s; font-family: 'Raleway', sans-serif;
+      margin-left: 14px;
+    }
+
+    .btn-hero-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+    .hero-decoration {
+      position: absolute; right: 60px; top: 50%;
+      transform: translateY(-50%);
+      width: 360px; height: 360px; border-radius: 50%;
+      border: 2px solid rgba(15,61,94,.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .hero-decoration::before {
+      content: ''; position: absolute;
+      width: 300px; height: 300px; border-radius: 50%;
+      border: 2px solid rgba(15,61,94,.15);
+    }
+
+    .hero-icon-big { font-size: 8rem; color: rgba(15,61,94,.15); }
+
+    /* ── ABOUT ── */
+    #about { background: #fff; }
+
+    .about-photo {
+      background: linear-gradient(135deg,var(--teal),var(--teal-dark));
+      border-radius: 16px; height: 280px;
+      overflow: hidden; position: relative;
+      box-shadow: 0 8px 26px rgba(15,61,94,.12);
+    }
+
+    .about-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+      display: block;
+    }
+
+    .about-info-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-bottom: 24px;
+    }
+
+    .about-info-item {
+      font-size: 0.9rem; color: var(--text-dark);
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+
+    .about-info-item i { color: var(--teal); margin-top: 2px; flex-shrink: 0; }
+    .about-info-item strong { color: var(--text-dark); }
+
+    .about-text {
+      font-size: 0.93rem; color: var(--text-muted);
+      line-height: 1.8; margin-bottom: 20px;
+    }
+
+    .stats-row {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 20px; margin: 40px 0 0;
+    }
+
+    .stat-card {
+      background: var(--teal-pale); border-radius: 12px;
+      padding: 24px 20px; text-align: center;
+      border-top: 3px solid var(--teal);
+    }
+
+    .stat-card .num {
+      font-family: 'Raleway', sans-serif; font-size: 2.2rem;
+      font-weight: 700; color: var(--teal-dark); display: block;
+    }
+
+    .stat-card p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--body-bg); }
+
+    .skill-category { margin-bottom: 36px; }
+
+    .skill-category h5 {
+      font-family: 'Raleway', sans-serif; font-weight: 700;
+      color: var(--teal-dark); font-size: 0.85rem;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    }
+
+    .skill-category h5::after {
+      content: ''; flex: 1; height: 1px; background: var(--teal-pale);
+    }
+
+    .skill-item { margin-bottom: 18px; }
+
+    .skill-item .skill-name {
+      font-size: 0.88rem; font-weight: 600; color: var(--text-dark);
+      margin-bottom: 6px; display: flex; justify-content: space-between;
+    }
+
+    .skill-bar {
+      height: 8px; background: #e9ecef;
+      border-radius: 4px; overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      border-radius: 4px; width: 0; transition: width 1.5s ease;
+    }
+
+    .project-tag {
+      background: var(--teal-pale); color: var(--teal-dark);
+      padding: 3px 10px; border-radius: 12px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+
+    .project-card {
+      background: var(--body-bg); border-radius: 14px;
+      overflow: hidden; box-shadow: 0 3px 16px rgba(0,0,0,.07);
+      transition: all .3s; height: 100%; border: 1px solid #e9ecef;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: #fff; }
+
+    .project-tile {
+      cursor: pointer;
+    }
+
+    .project-tile:focus {
+      outline: 3px solid rgba(15,61,94,.18);
+      outline-offset: 3px;
+    }
+
+    .project-tile > .project-media,
+    .project-tile > .project-media-gallery {
+      display: none;
+    }
+
+    .project-open-hint {
+      margin-top: 14px; color: var(--teal);
+      font-size: .76rem; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+
+    .project-media {
+      display: grid; grid-template-columns: 1.45fr .9fr;
+      gap: 8px; margin-bottom: 14px;
+    }
+
+    .project-media-side {
+      display: grid; gap: 8px;
+    }
+
+    .project-media-item {
+      position: relative; min-height: 132px;
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(15,61,94,.16);
+      background: linear-gradient(135deg, rgba(15,61,94,.12), rgba(4,11,20,.08));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal-dark); text-decoration: none;
+    }
+
+    .project-media-item.compact { min-height: 62px; }
+
+    .project-media-item img,
+    .project-media-item video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; background: #101820;
+    }
+
+    .project-media-fallback {
+      text-align: center; padding: 10px;
+      font-family: 'Raleway', sans-serif; font-size: .72rem;
+      font-weight: 700; line-height: 1.35;
+    }
+
+    .project-media-fallback i {
+      display: block; font-size: 1.25rem;
+      color: var(--teal); margin-bottom: 4px;
+    }
+
+    .project-media-item:not(.media-missing) .project-media-fallback { display: none; }
+
+    .project-media-badge {
+      position: absolute; left: 8px; bottom: 8px; z-index: 2;
+      background: rgba(4,11,20,.72); color: #fff;
+      border-radius: 999px; padding: 4px 8px;
+      font-size: .62rem; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .project-media-gallery {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px; margin-bottom: 14px;
+    }
+
+    .project-media-gallery .project-media-item {
+      min-height: 104px;
+    }
+
+    .project-modal .modal-content {
+      border: none; border-radius: 14px;
+      overflow: hidden; box-shadow: 0 24px 70px rgba(4,11,20,.24);
+    }
+
+    .project-modal.modal {
+      z-index: 10050;
+    }
+
+    .modal-backdrop.show {
+      z-index: 10040;
+    }
+
+    .project-modal .modal-header {
+      background: var(--teal); color: #fff;
+      border: none; padding: 18px 22px;
+    }
+
+    .project-modal .modal-title {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700; font-size: 1.15rem;
+    }
+
+    .project-modal .btn-close {
+      filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
+    .project-modal-body {
+      padding: 24px;
+    }
+
+    .project-modal-kicker {
+      font-family: 'Raleway', sans-serif;
+      font-size: .78rem; font-weight: 700;
+      color: var(--teal); text-transform: uppercase;
+      letter-spacing: .8px; margin-bottom: 8px;
+    }
+
+    .project-modal-desc {
+      color: var(--text-muted); line-height: 1.75;
+      font-size: .92rem; margin-bottom: 16px;
+    }
+
+    .project-modal-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 22px;
+    }
+
+    .project-slider {
+      border-radius: 12px; overflow: hidden;
+      background: #0b1520;
+      border: 1px solid var(--teal-pale);
+    }
+
+    .project-slider .carousel-item {
+      background: #0b1520;
+    }
+
+    .project-slider img,
+    .project-slider video {
+      width: 100%; height: min(62vh, 520px);
+      object-fit: contain; display: block;
+      background: #0b1520;
+    }
+
+    .project-slider-caption {
+      background: rgba(4,11,20,.74);
+      border-radius: 999px; padding: 6px 12px;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .76rem; font-weight: 700;
+    }
+
+    .project-subprojects {
+      display: grid; gap: 26px;
+    }
+
+    .project-subproject {
+      border: 1px solid var(--teal-pale);
+      border-radius: 12px; padding: 18px;
+      background: #fff;
+    }
+
+    .project-subproject h4 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.02rem; font-weight: 700;
+      color: var(--text-dark); margin-bottom: 8px;
+    }
+
+    .project-subproject p {
+      color: var(--text-muted); line-height: 1.75;
+      font-size: .9rem; margin-bottom: 14px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--body-bg); }
+
+    .service-card {
+      background: #fff; border-radius: 12px; padding: 32px 26px;
+      height: 100%; box-shadow: 0 3px 20px rgba(0,0,0,.06);
+      transition: all .3s; border-bottom: 3px solid transparent;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(15,61,94,.12);
+      border-bottom-color: var(--teal);
+    }
+
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 12px;
+      background: var(--teal-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: var(--teal); margin-bottom: 18px;
+    }
+
+    .service-card h4 {
+      font-family: 'Raleway', sans-serif; font-size: 1rem;
+      font-weight: 700; color: var(--text-dark); margin-bottom: 12px;
+    }
+
+    .service-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+    /* ── CONTACT ── */
+    #contact { background: #fff; }
+
+    .contact-card {
+      background: var(--teal-pale); border-radius: 12px; padding: 24px;
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;
+    }
+
+    .contact-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--teal); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+
+    .contact-card h4 {
+      font-family: 'Raleway', sans-serif; font-weight: 700;
+      font-size: 0.95rem; color: var(--text-dark); margin-bottom: 4px;
+    }
+
+    .contact-card p, .contact-card a {
+      font-size: 0.88rem; color: var(--text-muted); text-decoration: none;
+    }
+
+    .contact-card a:hover { color: var(--teal); }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%; padding: 12px 18px;
+      border: 1.5px solid #dee2e6; border-radius: 8px;
+      font-size: 0.9rem; font-family: 'Poppins', sans-serif;
+      transition: border .3s; outline: none;
+      background: #fff; margin-bottom: 16px;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(15,61,94,.1);
+    }
+
+    .contact-form textarea { height: 160px; resize: vertical; }
+
+    .btn-teal {
+      background: var(--teal); color: #fff; border: none;
+      padding: 13px 36px; border-radius: 30px;
+      font-size: 0.9rem; font-weight: 600;
+      font-family: 'Raleway', sans-serif; cursor: pointer;
+      transition: all .3s; display: inline-flex; align-items: center; gap: 8px;
+    }
+
+    .btn-teal:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--sidebar-bg); color: #aaa;
+      text-align: center; padding: 28px 40px; font-size: 0.85rem;
+    }
+
+    footer span { color: var(--teal); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 991px) {
+      #sidebar { transform: translateX(-100%); }
+      #sidebar.open { transform: translateX(0); }
+      #main { margin-left: 0; }
+      .hamburger { display: flex; }
+      section { padding: 60px 30px; }
+      #hero { padding: 100px 30px 60px; }
+      .hero-decoration { display: none; }
+      #hero h2 { font-size: 2.2rem; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .about-info-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 576px) {
+      .stats-row { grid-template-columns: 1fr; }
+      .project-media { grid-template-columns: 1fr; }
+      .project-media-side { grid-template-columns: 1fr 1fr; }
+      .project-media-gallery { grid-template-columns: 1fr; }
+    }
+
+    .sidebar-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.5); z-index: 9998;
+    }
+
+    .sidebar-overlay.show { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<aside id="sidebar">
+  <div class="sidebar-avatar">
+    <img src="assets/profile-photo-centered.jpeg" alt="Mohamad Eyad Mrei">
+  </div>
+  <h1>Mohamad Eyad Mrei</h1>
+  <div class="sidebar-socials">
+    <a href="https://linkedin.com/in/eyad-mrei-707397192" target="_blank"><i class="bi bi-linkedin"></i></a>
+    <a href="mailto:eyadmrei@gmail.com"><i class="bi bi-envelope-fill"></i></a>
+    <a href="tel:+963930516432"><i class="bi bi-telephone-fill"></i></a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#hero" class="nav-link active"><i class="bi bi-house-door-fill"></i> Home</a></li>
+      <li><a href="#about" class="nav-link"><i class="bi bi-person-fill"></i> About</a></li>
+      <li><a href="#skills" class="nav-link"><i class="bi bi-code-square"></i> Skills</a></li>
+      <li><a href="#projects" class="nav-link"><i class="bi bi-folder2-open"></i> Projects</a></li>
+      <li><a href="#services" class="nav-link"><i class="bi bi-gear-fill"></i> Services</a></li>
+      <li><a href="#contact" class="nav-link"><i class="bi bi-envelope-at-fill"></i> Contact</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<button class="hamburger" id="hamburger" onclick="toggleSidebar()">
+  <i class="bi bi-list"></i>
+</button>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content" data-aos="fade-right">
+      <h2>Mohamad Eyad Mrei</h2>
+      <p class="typed-wrap">I'm a <span id="typed-text"></span><span class="cursor">|</span></p>
+      <p class="hero-desc">
+        Structural Engineer with practical experience in concrete and steel projects, skilled at
+        connecting engineering design with BIM coordination, parametric workflows, and technical documentation.
+      </p>
+      <a href="#about" class="btn-hero"><i class="bi bi-person-fill"></i> About Me</a>
+      <a href="#contact" class="btn-hero-outline"><i class="bi bi-envelope-fill"></i> Contact Me</a>
+    </div>
+    <div class="hero-decoration">
+      <i class="bi bi-building hero-icon-big"></i>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" data-aos="fade-up">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">A detail-oriented engineer bridging structural design with digital BIM workflows.</p>
+    <div class="row g-5">
+      <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
+        <div class="about-photo">
+          <img src="assets/profile-photo-centered.jpeg" alt="Mohamad Eyad Mrei portrait">
+        </div>
+      </div>
+      <div class="col-lg-8" data-aos="fade-left" data-aos-delay="100">
+        <h3 style="font-family:'Raleway',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:16px;">BIM Structural Engineer &amp; Parametric Designer</h3>
+        <p class="about-text">Structural Engineer with a solid background in structural and seismic design, currently pursuing a Master's in Building Information Modeling and Management. I combine engineering precision with digital tools to deliver coordinated, efficient, and well-documented project outcomes.</p>
+        <p class="about-text">My approach connects design intent with BIM execution — from parametric form exploration in Grasshopper to seismic analysis in ETABS — always with a focus on clear communication and reliable follow-up within multidisciplinary teams.</p>
+      </div>
+    </div>
+    <div class="stats-row" data-aos="fade-up" data-aos-delay="200">
+      <div class="stat-card"><span class="num">2+</span><p>Years of Experience</p></div>
+      <div class="stat-card"><span class="num">14</span><p>Completed Projects</p></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" data-aos="fade-up">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-subtitle">Technical expertise across structural engineering, BIM, and parametric design.</p>
+    <div class="row g-5">
+      <div class="col-lg-6">
+        <div class="skill-category">
+          <h5><i class="bi bi-tools"></i> Structural Software</h5>
+          <div class="skill-item"><div class="skill-name"><span>ETABS (Seismic / Dynamic)</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>SAFE (Slabs & Foundations)</span><span>82%</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>SAP2000 (Tanks & Stairs)</span><span>78%</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>IDEA StatiCa</span><span>72%</span></div><div class="skill-bar"><div class="skill-fill" data-width="72"></div></div></div>
+        </div>
+        <div class="skill-category">
+          <h5><i class="bi bi-bezier2"></i> BIM & Documentation</h5>
+          <div class="skill-item"><div class="skill-name"><span>Autodesk Revit</span><span>92%</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>AutoCAD 2D</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>Primavera P6</span><span>68%</span></div><div class="skill-bar"><div class="skill-fill" data-width="68"></div></div></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="skill-category">
+          <h5><i class="bi bi-grid-3x3-gap-fill"></i> Parametric Design</h5>
+          <div class="skill-item"><div class="skill-name"><span>Grasshopper (Rhino)</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+          <div class="skill-item"><div class="skill-name"><span>Parametric Optimization</span><span>76%</span></div><div class="skill-bar"><div class="skill-fill" data-width="76"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" data-aos="fade-up">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtitle">A selection of structural, BIM, and parametric design projects.</p>
+    <div class="row g-4" id="projects-grid">
+      <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card" style="background:#fff;border-radius:16px;border:1px solid var(--teal-pale);box-shadow:0 4px 24px rgba(15,61,94,.08);padding:36px 40px;">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;padding-bottom:20px;border-bottom:2px solid var(--teal-pale);">
+            <div style="width:54px;height:54px;border-radius:12px;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="bi bi-folder2-open" style="color:#fff;font-size:1.4rem;"></i>
+            </div>
+            <div>
+              <h3 style="font-family:'Raleway',sans-serif;font-weight:700;font-size:1.15rem;color:var(--text-dark);margin:0;">Engineering &amp; BIM Projects</h3>
+              <p style="font-size:0.83rem;color:var(--text-muted);margin:0;">Structural · BIM · Parametric</p>
+            </div>
+          </div>
+          <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4">
+              <div class="project-tile" data-project="hospital" tabindex="0" role="button" style="padding:20px;border-radius:12px;background:var(--body-bg);border:1px solid #e9ecef;height:100%;transition:all .3s;" onmouseover="this.style.borderColor='var(--teal-light)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='#e9ecef';this.style.background='var(--body-bg)'">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                  <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#004d40,#00897b);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-hospital" style="color:#fff;font-size:.9rem;"></i></div>
+                </div>
+                <div class="project-media">
+                  <a class="project-media-item" href="project-media/hospital-structural-main.jpg" target="_blank" aria-label="Open hospital project image">
+                    <img src="project-media/hospital-structural-main.jpg" alt="Hospital structural and seismic study preview" loading="lazy">
+                    <span class="project-media-fallback"><i class="bi bi-image"></i>Project Image</span>
+                    <span class="project-media-badge"><i class="bi bi-image"></i> Image</span>
+                  </a>
+                  <div class="project-media-side">
+                    <a class="project-media-item compact" href="project-media/hospital-structural-detail.jpg" target="_blank" aria-label="Open hospital project detail image">
+                      <img src="project-media/hospital-structural-detail.jpg" alt="Hospital structural model detail" loading="lazy">
+                      <span class="project-media-fallback"><i class="bi bi-images"></i>Detail</span>
+                      <span class="project-media-badge"><i class="bi bi-images"></i> Detail</span>
+                    </a>
+                    <div class="project-media-item compact">
+                      <video controls muted preload="metadata" poster="project-media/hospital-structural-video-poster.jpg">
+                        <source src="project-media/hospital-structural-walkthrough.mp4" type="video/mp4">
+                      </video>
+                      <span class="project-media-fallback"><i class="bi bi-play-circle"></i>Project Video</span>
+                      <span class="project-media-badge"><i class="bi bi-play-fill"></i> Video</span>
+                    </div>
+                  </div>
+                </div>
+                <h5 style="font-family:'Raleway',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:8px;">Hospital Structural &amp; Seismic Study — Egypt</h5>
+                <p style="font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">Graduation project: full structural and seismic analysis of a hospital building. Load paths, seismic response, and performance requirements.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;"><span class="project-tag">ETABS</span><span class="project-tag">Seismic</span><span class="project-tag">Concrete</span></div>
+                <span class="project-open-hint"><i class="bi bi-arrows-fullscreen"></i> Open Project</span>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="project-tile" data-project="parametric" tabindex="0" role="button" style="padding:20px;border-radius:12px;background:var(--body-bg);border:1px solid #e9ecef;height:100%;transition:all .3s;" onmouseover="this.style.borderColor='var(--teal-light)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='#e9ecef';this.style.background='var(--body-bg)'">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                  <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#4a148c,#7b1fa2);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-bezier2" style="color:#fff;font-size:.9rem;"></i></div>
+                  <span style="font-size:0.7rem;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.5px;">Parametric</span>
+                </div>
+                <div class="project-media">
+                  <a class="project-media-item" href="C:\Users\ASUS\Desktop\for cv\VIDEO" target="_blank" aria-label="Open parametric optimization image">
+                    <img src="project-media/parametric-optimization-main.jpg" alt="Parametric structural form optimization preview" loading="lazy">
+                    <span class="project-media-fallback"><i class="bi bi-image"></i>Project Image</span>
+                    <span class="project-media-badge"><i class="bi bi-image"></i> Image</span>
+                  </a>
+                  <div class="project-media-side">
+                    <a class="project-media-item compact" href="project-media/parametric-optimization-detail.jpg" target="_blank" aria-label="Open parametric optimization detail image">
+                      <img src="project-media/parametric-optimization-detail.jpg" alt="Parametric optimization workflow detail" loading="lazy">
+                      <span class="project-media-fallback"><i class="bi bi-images"></i>Detail</span>
+                      <span class="project-media-badge"><i class="bi bi-images"></i> Detail</span>
+                    </a>
+                    <div class="project-media-item compact">
+                      <video controls muted preload="metadata" poster="project-media/parametric-optimization-video-poster.jpg">
+                        <source src="project-media/parametric-optimization-demo.mp4" type="video/mp4">
+                      </video>
+                      <span class="project-media-fallback"><i class="bi bi-play-circle"></i>Project Video</span>
+                      <span class="project-media-badge"><i class="bi bi-play-fill"></i> Video</span>
+                    </div>
+                  </div>
+                </div>
+                <h5 style="font-family:'Raleway',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:8px;">Parametric Structural Form Optimization</h5>
+                <p style="font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">Parametric modeling workflows using Grasshopper and Rhino to achieve flexible architectural forms and optimized structural solutions.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;"><span class="project-tag">Grasshopper</span><span class="project-tag">Rhino</span><span class="project-tag">American Code</span><span class="project-tag">Optimization</span></div>
+                <span class="project-open-hint"><i class="bi bi-arrows-fullscreen"></i> Open Project</span>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="project-tile" data-project="steelProjects" tabindex="0" role="button" style="padding:20px;border-radius:12px;background:var(--body-bg);border:1px solid #e9ecef;height:100%;transition:all .3s;" onmouseover="this.style.borderColor='var(--teal-light)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='#e9ecef';this.style.background='var(--body-bg)'">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                  <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#263238,#546e7a);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-building-gear" style="color:#fff;font-size:.9rem;"></i></div>
+                  <span style="font-size:0.7rem;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.5px;">Steel</span>
+                </div>
+                <h5 style="font-family:'Raleway',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:8px;">STEEL</h5>
+                <p style="font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">A diverse set of steel projects covering petrol stations, mechanical equipment supports, canopies, hangars, mezzanine additions, connection checks, and foundation studies.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;"><span class="project-tag">SAP2000</span><span class="project-tag">Tekla</span><span class="project-tag">IDEA StatiCa</span><span class="project-tag">Wind Loads</span><span class="project-tag">American Code</span></div>
+                <span class="project-open-hint"><i class="bi bi-arrows-fullscreen"></i> Open Project</span>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="project-tile" data-project="concreteProjects" tabindex="0" role="button" style="padding:20px;border-radius:12px;background:var(--body-bg);border:1px solid #e9ecef;height:100%;transition:all .3s;" onmouseover="this.style.borderColor='var(--teal-light)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='#e9ecef';this.style.background='var(--body-bg)'">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                  <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#4e342e,#8d6e63);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-buildings" style="color:#fff;font-size:.9rem;"></i></div>
+                  <span style="font-size:0.7rem;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.5px;">Concrete</span>
+                </div>
+                <h5 style="font-family:'Raleway',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:8px;">CONCRETE</h5>
+                <p style="font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">Concrete structural projects including hotel buildings, basement parking levels, halls, reinforced concrete systems, and coordinated concrete-steel solutions.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;"><span class="project-tag">ETABS</span><span class="project-tag">RC Design</span><span class="project-tag">Steel Roof</span><span class="project-tag">Basement</span></div>
+                <span class="project-open-hint"><i class="bi bi-arrows-fullscreen"></i> Open Project</span>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="project-tile" data-project="revit" tabindex="0" role="button" style="padding:20px;border-radius:12px;background:var(--body-bg);border:1px solid #e9ecef;height:100%;transition:all .3s;" onmouseover="this.style.borderColor='var(--teal-light)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='#e9ecef';this.style.background='var(--body-bg)'">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                  <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#006064,#00838f);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-file-earmark-ruled" style="color:#fff;font-size:.9rem;"></i></div>
+                  <span style="font-size:0.7rem;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.5px;">BIM</span>
+                </div>
+                <div class="project-media">
+                  <a class="project-media-item" href="project-media/revit-model-main.jpg" target="_blank" aria-label="Open Revit model image">
+                    <img src="project-media/revit-model-main.jpg" alt="Revit model management preview" loading="lazy">
+                    <span class="project-media-fallback"><i class="bi bi-image"></i>Project Image</span>
+                    <span class="project-media-badge"><i class="bi bi-image"></i> Image</span>
+                  </a>
+                  <div class="project-media-side">
+                    <a class="project-media-item compact" href="project-media/revit-model-detail.jpg" target="_blank" aria-label="Open Revit model detail image">
+                      <img src="project-media/revit-model-detail.jpg" alt="Revit model detail" loading="lazy">
+                      <span class="project-media-fallback"><i class="bi bi-images"></i>Detail</span>
+                      <span class="project-media-badge"><i class="bi bi-images"></i> Detail</span>
+                    </a>
+                    <div class="project-media-item compact">
+                      <video controls muted preload="metadata" poster="project-media/revit-model-video-poster.jpg">
+                        <source src="project-media/revit-model-overview.mp4" type="video/mp4">
+                      </video>
+                      <span class="project-media-fallback"><i class="bi bi-play-circle"></i>Project Video</span>
+                      <span class="project-media-badge"><i class="bi bi-play-fill"></i> Video</span>
+                    </div>
+                  </div>
+                </div>
+                <h5 style="font-family:'Raleway',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:8px;">Revit Model Management</h5>
+                <p style="font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">Professional Revit modeling for multi-storey buildings, including organized model structure, coordinated floor systems, documentation readiness, and BIM standards alignment.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;"><span class="project-tag">Revit</span><span class="project-tag">BIM Modeling</span><span class="project-tag">High-Rise</span><span class="project-tag">Documentation</span></div>
+                <span class="project-open-hint"><i class="bi bi-arrows-fullscreen"></i> Open Project</span>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="project-tile" data-project="ideaAutoCad" tabindex="0" role="button" style="padding:20px;border-radius:12px;background:var(--body-bg);border:1px solid #e9ecef;height:100%;transition:all .3s;" onmouseover="this.style.borderColor='var(--teal-light)';this.style.background='var(--teal-pale)'" onmouseout="this.style.borderColor='#e9ecef';this.style.background='var(--body-bg)'">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                  <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#37474f,#607d8b);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="bi bi-rulers" style="color:#fff;font-size:.9rem;"></i></div>
+                  <span style="font-size:0.7rem;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.5px;">Detailing</span>
+                </div>
+                <div class="project-media">
+                  <a class="project-media-item" href="project-media/idea +cad/01.png" target="_blank" aria-label="Open IDEA + AutoCAD image">
+                    <img src="project-media/idea +cad/01.png" alt="IDEA + AutoCAD project preview" loading="lazy">
+                    <span class="project-media-fallback"><i class="bi bi-image"></i>Project Image</span>
+                    <span class="project-media-badge"><i class="bi bi-image"></i> Image</span>
+                  </a>
+                  <div class="project-media-side">
+                    <a class="project-media-item compact" href="project-media/idea +cad/02.png" target="_blank" aria-label="Open IDEA + AutoCAD detail image">
+                      <img src="project-media/idea +cad/02.png" alt="IDEA + AutoCAD detail" loading="lazy">
+                      <span class="project-media-fallback"><i class="bi bi-images"></i>Detail</span>
+                      <span class="project-media-badge"><i class="bi bi-images"></i> Detail</span>
+                    </a>
+                  </div>
+                </div>
+                <h5 style="font-family:'Raleway',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:8px;">IDEA + AutoCAD</h5>
+                <p style="font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;"></p>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;"><span class="project-tag">IDEA StatiCa</span><span class="project-tag">AutoCAD</span></div>
+                <span class="project-open-hint"><i class="bi bi-arrows-fullscreen"></i> Open Project</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade project-modal" id="projectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModalTitle">Project Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body project-modal-body">
+          <div class="project-modal-kicker">Project Overview</div>
+          <p class="project-modal-desc" id="projectModalDesc"></p>
+          <div class="project-modal-tags" id="projectModalTags"></div>
+          <div id="projectCarousel" class="carousel slide project-slider">
+            <div class="carousel-inner" id="projectCarouselInner"></div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div class="project-subprojects d-none" id="projectSubprojects"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" data-aos="fade-up">
+    <h2 class="section-title">Services</h2>
+    <p class="section-subtitle">What I bring to your engineering and BIM projects.</p>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="service-card"><div class="service-icon"><i class="bi bi-building-gear"></i></div><h4>Structural Design</h4><p>Analysis and design of concrete and steel structures including load path evaluation, structural behavior assessment, and performance-based design following international standards.</p></div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="150">
+        <div class="service-card"><div class="service-icon"><i class="bi bi-activity"></i></div><h4>Seismic & Dynamic Analysis</h4><p>Structural and seismic studies using ETABS for dynamic building analysis, including seismic response evaluation, modal analysis, and performance requirements.</p></div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="service-card"><div class="service-icon"><i class="bi bi-layers-fill"></i></div><h4>BIM Coordination</h4><p>Professional Revit modeling with BIM coordination, LOD workflow management, and multidisciplinary information quality assurance for architectural and structural teams.</p></div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="250">
+        <div class="service-card"><div class="service-icon"><i class="bi bi-bezier2"></i></div><h4>Parametric Design</h4><p>Grasshopper-based parametric workflows for architectural form exploration, structural optimization, weight efficiency analysis, and utilization ratio control.</p></div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="service-card"><div class="service-icon"><i class="bi bi-file-earmark-ruled-fill"></i></div><h4>Technical Documentation</h4><p>Clear, coordinated technical documentation aligned with project standards — drawings, reports, model outputs, and execution follow-up for construction teams.</p></div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="350">
+        <div class="service-card"><div class="service-icon"><i class="bi bi-diagram-3-fill"></i></div><h4>Foundation & Slab Design</h4><p>Using SAFE for slab and foundation analysis, and SAP2000 for specialized elements such as water tanks, stairs, and retaining structures.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-aos="fade-up">
+    <h2 class="section-title">Contact</h2>
+    <p class="section-subtitle">Let's develop an efficient structural, BIM, or parametric design solution that achieves the required performance with optimized cost and practical project value.</p>
+    <div class="row g-5">
+      <div class="col-lg-5" data-aos="fade-right" data-aos-delay="100">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <div><h4>Location</h4><p>Damascus, Syria</p></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+          <div><h4>Phone</h4><a href="tel:+963930516432">+963 930 516 432</a><br><a href="tel:0112114402">011 211 4402</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+          <div><h4>Email</h4><a href="mailto:eyadmrei@gmail.com">eyadmrei@gmail.com</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon"><i class="bi bi-linkedin"></i></div>
+          <div><h4>LinkedIn</h4><a href="https://linkedin.com/in/eyad-mrei-707397192" target="_blank">linkedin.com/in/eyad-mrei-707397192</a></div>
+        </div>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+        <div class="contact-form">
+          <div class="row g-3">
+            <div class="col-md-6"><input type="text" placeholder="Your Name" /></div>
+            <div class="col-md-6"><input type="email" placeholder="Your Email" /></div>
+          </div>
+          <input type="text" placeholder="Subject" />
+          <textarea placeholder="Your Message"></textarea>
+          <button class="btn-teal"><i class="bi bi-send-fill"></i> Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 <span>Mohamad Eyad Mrei</span> — BIM Structural Engineer | Damascus, Syria</p>
+    <p style="margin-top:6px;font-size:.78rem;">Inspired by iPortfolio · BootstrapMade</p>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, once: true, offset: 80 });
+
+  const words = ['Structural Engineer', 'BIM Specialist', 'Parametric Designer', 'Seismic Analyst'];
+  let wi = 0, ci = 0, del = false;
+  const el = document.getElementById('typed-text');
+  function typeLoop() {
+    const w = words[wi];
+    el.textContent = del ? w.slice(0, ci--) : w.slice(0, ci++);
+    if (!del && ci === w.length + 1) { del = true; setTimeout(typeLoop, 1500); return; }
+    if (del && ci < 0) { del = false; wi = (wi + 1) % words.length; ci = 0; }
+    setTimeout(typeLoop, del ? 60 : 100);
+  }
+  typeLoop();
+
+  function animateSkills() {
+    document.querySelectorAll('.skill-fill').forEach(bar => {
+      const rect = bar.getBoundingClientRect();
+      if (rect.top < window.innerHeight && !bar.style.width) {
+        bar.style.width = bar.dataset.width + '%';
+      }
+    });
+  }
+  window.addEventListener('scroll', animateSkills);
+  animateSkills();
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + cur);
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); closeSidebar(); }
+    });
+  });
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+  }
+
+  const projectDetails = {
+    hospital: {
+      title: 'Hospital Structural & Seismic Study - Egypt',
+      description: 'Graduation project covering full structural and seismic analysis of a hospital building, including load paths, seismic response, concrete structural behavior, and performance requirements.',
+      tags: ['ETABS', 'Seismic', 'Concrete'],
+      media: [
+        { type: 'video', src: 'project-media/hos/hos-video.mp4', caption: '' },
+        { type: 'image', src: 'project-media/hos/01.png', caption: 'Hospital image 01' },
+        { type: 'image', src: 'project-media/hos/02.png', caption: 'Hospital image 02' },
+        { type: 'image', src: 'project-media/hos/03.png', caption: 'Hospital image 03' },
+        { type: 'image', src: 'project-media/hos/04.png', caption: 'Hospital image 04' },
+        { type: 'image', src: 'project-media/hos/05.png', caption: 'Hospital image 05' },
+        { type: 'image', src: 'project-media/hos/06.png', caption: 'Hospital image 06' },
+        { type: 'image', src: 'project-media/hos/07.png', caption: 'Hospital image 07' },
+        { type: 'image', src: 'project-media/hos/Picture1.jpg', caption: 'Hospital image 08' },
+        { type: 'image', src: 'project-media/hos/Picture2.jpg', caption: 'Hospital image 09' },
+        { type: 'image', src: 'project-media/hos/Picture3.jpg', caption: 'Hospital image 10' },
+        { type: 'image', src: 'project-media/hos/Picture4.jpg', caption: 'Hospital image 11' },
+        { type: 'image', src: 'project-media/hos/Picture5.jpg', caption: 'Hospital image 12' },
+        { type: 'image', src: 'project-media/hos/Picture6.jpg', caption: 'Hospital image 13' },
+        { type: 'image', src: 'project-media/hos/Picture7.jpg', caption: 'Hospital image 14' },
+        { type: 'image', src: 'project-media/hos/Picture8.jpg', caption: 'Hospital image 15' },
+        { type: 'image', src: 'project-media/hos/pro.webp', caption: 'Hospital image 16' },
+        { type: 'image', src: 'project-media/hos/الكرتونة.webp', caption: 'Hospital image 17' },
+        { type: 'image', src: 'project-media/hos/الكرتونة 2.webp', caption: 'Hospital image 18' },
+      ]
+    },
+    parametric: {
+      title: 'Parametric Structural Form Optimization',
+      description: 'A collection of parametric modeling studies developed in Grasshopper and Rhino to achieve the required architectural form while keeping the model highly adaptable to architectural revisions. The workflows support optimal structural form and section selection according to the American code, improving design efficiency, flexibility, and coordination between architecture and engineering.',
+      tags: ['Grasshopper', 'Rhino', 'Parametric Modeling', 'Structural Optimization', 'American Code'],
+      media: [
+        { type: 'video', src: 'project-media/Parametric Structural Form Optimization/Tree Coiunms.mp4', caption: 'Parametric tree columns study' },
+        { type: 'video', src: 'project-media/Parametric Structural Form Optimization/2D Truss.mp4', caption: 'Parametric 2D truss generation' },
+        { type: 'video', src: 'project-media/Parametric Structural Form Optimization/Arc Truss.mp4', caption: 'Parametric arc truss exploration' },
+        { type: 'video', src: 'project-media/Parametric Structural Form Optimization/Hinger.mp4', caption: 'Parametric hangar structural form' },
+        { type: 'video', src: 'project-media/Parametric Structural Form Optimization/Space Truss.mp4', caption: 'Parametric space truss system' }
+      ]
+    },
+    ideaAutoCad: {
+      title: 'IDEA + AutoCAD',
+      description: '',
+      tags: ['IDEA StatiCa', 'AutoCAD'],
+      media: [
+        { type: 'image', src: 'project-media/idea +cad/01.png', caption: 'IDEA + AutoCAD image 01' },
+        { type: 'image', src: 'project-media/idea +cad/02.png', caption: 'IDEA + AutoCAD image 02' },
+        { type: 'image', src: 'project-media/idea +cad/03.png', caption: 'IDEA + AutoCAD image 03' },
+        { type: 'image', src: 'project-media/idea +cad/04.png', caption: 'IDEA + AutoCAD image 04' },
+        { type: 'image', src: 'project-media/idea +cad/05.png', caption: 'IDEA + AutoCAD image 05' },
+        { type: 'image', src: 'project-media/idea +cad/06.png', caption: 'IDEA + AutoCAD image 06' },
+        { type: 'image', src: 'project-media/idea +cad/07.png', caption: 'IDEA + AutoCAD image 07' },
+        { type: 'image', src: 'project-media/idea +cad/08.png', caption: 'IDEA + AutoCAD image 08' },
+        { type: 'image', src: 'project-media/idea +cad/09.png', caption: 'IDEA + AutoCAD image 09' },
+        { type: 'image', src: 'project-media/idea +cad/10.png', caption: 'IDEA + AutoCAD image 10' }
+      ]
+    },
+    steelProjects: {
+      title: 'STEEL',
+      description: 'Selected steel projects presented as separate case studies, including steel canopy systems and long-span steel hangars designed and coordinated using structural analysis and steel detailing workflows.',
+      tags: ['SAP2000', 'Tekla', 'IDEA StatiCa', 'Wind Loads', 'American Code'],
+      subprojects: [
+        {
+          title: 'Petrol Station Steel Canopy',
+          description: 'Petrol station steel canopy project where the architectural form was preserved through a steel gable structural system. The structural analysis was completed in ETABS, connection design was checked in IDEA StatiCa, and the study was carried out according to the American code.',
+          tags: ['ETABS', 'IDEA StatiCa', 'Steel Gable', 'Connections', 'American Code'],
+          media: [
+            { type: 'image', src: 'project-media/Steel/steel-petrol-station-render-01.png', caption: 'Architectural petrol station render' },
+            { type: 'image', src: 'project-media/Steel/steel-petrol-station-render-02.png', caption: 'Canopy architectural perspective' },
+            { type: 'image', src: 'project-media/Steel/steel-petrol-station-etabs-01.png', caption: 'ETABS steel canopy elevation model' },
+            { type: 'image', src: 'project-media/Steel/steel-petrol-station-etabs-02.png', caption: 'ETABS canopy roof framing model' },
+            { type: 'image', src: 'project-media/Steel/steel-petrol-station-etabs-03.png', caption: 'ETABS structural side view' },
+            { type: 'image', src: 'project-media/Steel/steel-petrol-station-idea-01.png', caption: 'IDEA StatiCa connection check' },
+            { type: 'image', src: 'project-media/Steel/steel-petrol-station-idea-02.png', caption: 'IDEA StatiCa connection detail' }
+          ]
+        },
+        {
+          title: 'Mechanical Equipment Steel Support Building',
+          description: 'Steel support building designed to carry mechanical equipment loads with a coordinated framing system and bracing layout. The analytical study was performed in SAP2000, while the steel model was developed in Tekla Structures to support detailing, coordination, and constructability review.',
+          tags: ['SAP2000', 'Tekla', 'Mechanical Equipment', 'Steel Framing', 'Bracing System'],
+          media: [
+            { type: 'image', src: 'project-media/Steel/steel-mechanical-equipment-01.png', caption: 'SAP2000 analytical model overview' },
+            { type: 'image', src: 'project-media/Steel/steel-mechanical-equipment-02.png', caption: 'Tekla steel model perspective' },
+            { type: 'image', src: 'project-media/Steel/steel-mechanical-equipment-03.png', caption: 'Tekla framing and bracing overview' }
+          ]
+        },
+        {
+          title: 'Steel Canopy Structure',
+          description: 'Steel canopy project connected to the main building. The analytical study was completed in SAP2000, the steel details were modeled in Tekla Structures, and the connection design was checked in IDEA StatiCa according to the American code.',
+          tags: ['SAP2000', 'Tekla', 'IDEA StatiCa', 'American Code'],
+          media: [
+            { type: 'image', src: 'project-media/Steel/steel-canopy-main.jpeg', caption: 'Tekla structural model' },
+            { type: 'image', src: 'project-media/Steel/steel-canopy-sap-model.jpeg', caption: 'SAP2000 analytical model' },
+            { type: 'image', src: 'project-media/Steel/steel-canopy-loads.jpeg', caption: 'Load and support study' },
+            { type: 'image', src: 'project-media/Steel/steel-canopy-tekla-details.jpeg', caption: 'Tekla details and connections' }
+          ]
+        },
+        {
+          title: 'Steel Workshop Hangar',
+          description: 'Steel workshop hangar with a total length of 140 m and an approximate 30 m clear span. The study was carried out according to the American code, with wind loads taken into account as a governing design action. Structural analysis was performed in SAP2000 and the steel model was developed in Tekla Structures.',
+          tags: ['SAP2000', 'Tekla', '140 m Length', '30 m Span', 'Wind Loads', 'American Code'],
+          media: [
+            { type: 'image', src: 'project-media/Steel/steel-hangar-main.png', caption: 'Main steel hangar structural model' },
+            { type: 'image', src: 'project-media/Steel/steel-hangar-sap-model.png', caption: 'SAP2000 analytical model' },
+            { type: 'image', src: 'project-media/Steel/steel-hangar-model-front.png', caption: 'Front view of the hangar model' },
+            { type: 'image', src: 'project-media/Steel/steel-hangar-overview.png', caption: 'Full hangar overview' }
+          ]
+        },
+        {
+          title: 'Steel Mezzanine Addition',
+          description: 'Steel mezzanine floor addition to an existing building. The structural model was developed for the added steel floor system, base plate connections were checked in IDEA StatiCa, and foundation design was studied in SAFE.',
+          tags: ['Steel Mezzanine', 'IDEA StatiCa', 'Base Plate', 'SAFE', 'Foundations'],
+          media: [
+            { type: 'image', src: 'project-media/Steel/steel-mezzanine-model.png', caption: 'Steel mezzanine structural model' },
+            { type: 'image', src: 'project-media/Steel/steel-mezzanine-plan.png', caption: 'Mezzanine framing plan' },
+            { type: 'image', src: 'project-media/Steel/steel-mezzanine-foundation-details.png', caption: 'Foundation and pedestal details' },
+            { type: 'image', src: 'project-media/Steel/steel-mezzanine-baseplate-1.png', caption: 'Base plate connection check' },
+            { type: 'image', src: 'project-media/Steel/steel-mezzanine-baseplate-2.png', caption: 'Base plate connection detail' },
+            { type: 'image', src: 'project-media/Steel/steel-mezzanine-safe-foundations.png', caption: 'SAFE foundation study' }
+          ]
+        },
+          {
+          title: 'Skylight',
+          description: '',
+          tags: [],
+          media: [
+            { type: 'image', src: 'project-media/skylight/01.png', caption: '' },
+            { type: 'image', src: 'project-media/skylight/02.png', caption: '' },
+            { type: 'image', src: 'project-media/skylight/03.png', caption: '' }, ]
+        }
+      ]
+    },
+    concreteProjects: {
+      title: 'CONCRETE',
+      description: 'Selected concrete projects presented as focused case studies, covering reinforced concrete systems, basement parking levels, public halls, and coordinated concrete-steel structural solutions.',
+      tags: ['ETABS', 'RC Design', 'Concrete', 'Steel Roof', 'Basement'],
+      subprojects: [
+        {
+          title: 'Hotel Basement Parking & Wedding Hall Structure',
+          description: 'Multi-storey hotel project developed as a coordinated concrete and steel structural scheme, including a separate parking garage block with a wedding hall above it. The main hotel tower is designed with a reinforced concrete wall system and flat slab floor plates, providing efficient vertical load transfer, lateral stability, and flexible architectural planning. The upper level includes a dome feature that required careful coordination between the structural model, architectural form, and roof framing requirements.',
+          tags: ['Concrete', 'Steel Roof', 'Hotel', 'Basement Parking', 'Wedding Hall'],
+          media: [
+            { type: 'image', src: 'project-media/concrete/concrete-hotel-hall-garage-01.png', caption: 'Concrete hotel structure with basement parking and steel hall roof' },
+            { type: 'image', src: 'project-media/concrete/concrete-hotel-structural-model-02.png', caption: 'Multi-storey concrete structural model overview' },
+            { type: 'image', src: 'project-media/concrete/concrete-hotel-architectural-view-01.png', caption: 'Architectural hotel massing and exterior coordination view' },
+            { type: 'image', src: 'project-media/concrete/concrete-hotel-structural-model-03.png', caption: 'Concrete slabs, cores, columns, and vertical load path study' },
+            { type: 'image', src: 'project-media/concrete/concrete-hotel-architectural-view-02.png', caption: 'Hotel exterior composition with roof and landscape elements' },
+            { type: 'image', src: 'project-media/concrete/concrete-hotel-structural-model-04.png', caption: 'Structural model perspective showing slabs, cores, and vertical elements' }
+          ]
+        },
+        {
+          title: 'Reinforced Concrete Villa Structural Study',
+          description: 'Complete structural study for a reinforced concrete villa developed in ETABS, covering the analysis and design coordination of beams, columns, structural walls, slabs, and foundation elements. The model was prepared to evaluate load paths, member behavior, support conditions, and the relationship between the architectural plan and the structural framing system, supporting a practical and well-coordinated residential design solution.',
+          tags: ['ETABS', 'RC Design', 'Villa', 'Beams', 'Columns', 'Walls', 'Foundations'],
+          media: [
+            { type: 'image', src: 'concrete-villa-architectural-plan.png', caption: 'Architectural villa plan used for structural coordination' },
+            { type: 'image', src: 'concrete-villa-etabs-model.png', caption: 'ETABS structural model with beams, columns, walls, slabs, and foundations' }
+          ]
+        },
+        {
+          title: ' Villa',
+          description: '',
+          tags: [],
+          media: [
+            { type: 'image', src: 'project-media/vila/06.webp', caption: '' },
+            { type: 'image', src: 'project-media/vila/02.webp', caption: '' },
+             { type: 'image', src: 'project-media/vila/03.webp', caption: '' },
+            { type: 'image', src: 'project-media/vila/04.webp', caption: '' },
+             { type: 'image', src: 'project-media/vila/05.webp', caption: '' },
+            { type: 'image', src: 'project-media/vila/01.png', caption: '' }
+          ]
+        }
+      ]
+    },
+    steelCanopy: {
+      title: 'Steel Canopy Structure',
+      description: 'Steel canopy project connected to the main building. The analytical study was completed in SAP2000, the steel details were modeled in Tekla Structures, and the connection design was checked in IDEA StatiCa according to the American code.',
+      tags: ['SAP2000', 'Tekla', 'IDEA StatiCa', 'American Code'],
+      media: [
+        { type: 'image', src: 'project-media/steel-canopy-main.jpeg', caption: 'Tekla structural model' },
+        { type: 'image', src: 'project-media/steel-canopy-sap-model.jpeg', caption: 'SAP2000 analytical model' },
+        { type: 'image', src: 'project-media/steel-canopy-loads.jpeg', caption: 'Load and support study' },
+        { type: 'image', src: 'project-media/steel-canopy-tekla-details.jpeg', caption: 'Tekla details and connections' }
+      ]
+    },
+    steelHangar: {
+      title: 'Steel Hangar Structure',
+      description: 'Steel hangar structure with a total length of 140 m and a 30 m clear span. The analytical study was completed in SAP2000 according to the American code, with governing wind loads taken into account as a controlling design case.',
+      tags: ['SAP2000', 'Steel Hangar', '30 m Span', 'Wind Loads', 'American Code'],
+      media: [
+        { type: 'image', src: 'project-media/steel-hangar-main.png', caption: 'Main steel hangar structural model' },
+        { type: 'image', src: 'project-media/steel-hangar-model-front.png', caption: 'Front view of the hangar model' },
+        { type: 'image', src: 'project-media/steel-hangar-sap-model.png', caption: 'SAP2000 analytical model' },
+        { type: 'image', src: 'project-media/steel-hangar-overview.png', caption: 'Full hangar overview' }
+      ]
+    },
+    revit: {
+      title: 'Revit Model Management',
+      description: 'Professional Revit model development and management for building projects, with a focus on clear model organization, coordinated floor systems, documentation readiness, and BIM standards alignment.',
+      tags: ['Revit', 'BIM Modeling', 'High-Rise', 'Documentation', 'BIM Standards'],
+      subprojects: [
+        {
+          title: 'Multi-Storey Tower Revit Modeling',
+          description: 'Revit modeling project for a multi-storey tower, developed to represent the building massing, repeated floor plates, vertical structural elements, roof configuration, openings, shafts, and architectural-structural coordination requirements. The model supports design review, visual communication, quantity-oriented workflows, and the preparation of organized BIM documentation.',
+          tags: ['Revit', 'BIM Modeling', 'Multi-Storey Tower', 'Floor Plates', 'Model Coordination'],
+          media: [
+            { type: 'image', src: 'project-media/Revit Model Management/revit-multi-storey-tower-01.webp', caption: 'Overall Revit tower model perspective' },
+            { type: 'image', src: 'project-media/Revit Model Management/revit-multi-storey-tower-02.webp', caption: 'Roof and upper-floor modeling detail' }
+          ]
+        },
+        {
+          title: 'Multi-Storey Reinforced Concrete Building Model',
+          description: 'Revit modeling project for a multi-storey reinforced concrete building, developed with repeated floor systems, vertical cores, columns, shear walls, edge beams, and foundation-level elements. The model was organized to support structural visualization, design coordination, model review, and documentation workflows while maintaining a clear relationship between typical floors, vertical load paths, and architectural massing.',
+          tags: ['Revit', 'BIM Modeling', 'Reinforced Concrete', 'Multi-Storey Building', 'Structural Coordination'],
+          media: [
+            { type: 'image', src: 'project-media/Revit Model Management/revit-rc-residential-building-01.webp', caption: 'Revit reinforced concrete building model overview' },
+            { type: 'image', src: 'project-media/Revit Model Management/revit-rc-residential-building-02.webp', caption: 'Detailed perspective showing repeated floors, cores, and vertical elements' }
+          ]
+        },
+        {
+          title: 'Revit Structural Model Visualization',
+          description: 'Revit-based structural modeling and visualization project for a multi-storey concrete building, prepared to communicate the structural system clearly through exterior and interior render views. The model highlights repeated floor framing, ribbed and waffle slab zones, vertical cores, columns, beams, and architectural massing coordination, then uses Lumion visualization to support presentation, design review, and stakeholder communication.',
+          tags: ['Revit', 'Lumion', 'Structural Visualization', 'Waffle Slab', 'Multi-Storey Concrete'],
+          media: [
+            { type: 'image', src: 'project-media/Revit Model Management/revit-lumion-structural-visualization-exterior-03.webp', caption: 'Exterior structural model visualization overview' },
+            { type: 'image', src: 'project-media/Revit Model Management/revit-lumion-structural-visualization-exterior-01.webp', caption: 'Rendered exterior perspective of the multi-storey concrete building' },
+            { type: 'image', src: 'project-media/Revit Model Management/revit-lumion-structural-visualization-exterior-02.webp', caption: 'Low-angle exterior view showing vertical elements and floor framing' },
+            { type: 'image', src: 'project-media/Revit Model Management/revit-lumion-structural-visualization-interior-02.webp', caption: 'Interior view of waffle slab and column coordination' },
+            { type: 'image', src: 'project-media/Revit Model Management/revit-lumion-structural-visualization-interior-01.webp', caption: 'Interior structural space with ribbed slab and support layout' },
+            { type: 'image', src: 'project-media/Revit Model Management/revit-lumion-structural-visualization-interior-03.webp', caption: 'Detailed floor framing visualization and slab underside study' },
+            // { type: 'video', src: 'file_example_MP4_480_1_5MG.mp4', caption: 'Structural visualization animation walkthrough' }
+          ]
+        },
+        {
+          title: 'Revit Model Organization & Documentation',
+          description: 'Professional Revit model development and management, including model organization, documentation structure, architectural coordination, and BIM standards alignment across project teams.',
+          tags: ['Revit', 'Documentation', 'BIM Standards'],
+          media: [
+            { type: 'image', src: 'project-media/Revit Model Management/revit-model-main.jpg', caption: 'Revit model overview' },
+            { type: 'image', src: 'project-media/Revit Model Management/revit-model-detail.jpg', caption: 'Revit model detail' }
+          ]
+        }
+      ]
+    }
+  };
+
+  function showProject(projectKey) {
+    const project = projectDetails[projectKey];
+    if (!project) return;
+
+    const modalDesc = document.getElementById('projectModalDesc');
+    const modalTags = document.getElementById('projectModalTags');
+    const carousel = document.getElementById('projectCarousel');
+    const carouselInner = document.getElementById('projectCarouselInner');
+    const subprojectsContainer = document.getElementById('projectSubprojects');
+
+    document.getElementById('projectModalTitle').textContent = project.title;
+    modalDesc.textContent = project.description;
+    modalTags.innerHTML = project.tags
+      .map(tag => `<span class="project-tag">${tag}</span>`)
+      .join('');
+
+    const buildCarouselItem = (item, index) => {
+      const active = index === 0 ? ' active' : '';
+      const mediaMarkup = item.type === 'video'
+        ? `<video controls preload="metadata"><source src="${item.src}" type="${item.src.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}"></video>`
+        : `<img src="${item.src}" alt="${item.caption}" loading="lazy">`;
+
+      return `
+        <div class="carousel-item${active}">
+          ${mediaMarkup}
+          <div class="carousel-caption d-none d-md-block">
+            <span class="project-slider-caption"><i class="bi bi-images"></i>${item.caption}</span>
+          </div>
+        </div>
+      `;
+    };
+
+    if (project.subprojects) {
+      carousel.classList.add('d-none');
+      carouselInner.innerHTML = '';
+      subprojectsContainer.classList.remove('d-none');
+      subprojectsContainer.innerHTML = project.subprojects.map((subproject, subIndex) => {
+        const carouselId = `projectSubCarousel${subIndex}`;
+        return `
+          <article class="project-subproject">
+            <h4>${subproject.title}</h4>
+            <p>${subproject.description}</p>
+            <div class="project-modal-tags">
+              ${subproject.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+            </div>
+            <div id="${carouselId}" class="carousel slide project-slider">
+              <div class="carousel-inner">
+                ${subproject.media.map(buildCarouselItem).join('')}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    } else {
+      subprojectsContainer.classList.add('d-none');
+      subprojectsContainer.innerHTML = '';
+      carousel.classList.remove('d-none');
+      carouselInner.innerHTML = project.media.map(buildCarouselItem).join('');
+    }
+
+    document.querySelectorAll('#projectModal img').forEach(img => {
+      img.addEventListener('error', () => {
+        const fallback = document.createElement('div');
+        fallback.className = 'd-flex align-items-center justify-content-center text-white';
+        fallback.style.cssText = 'height:min(62vh,520px);background:#0b1520;font-family:Raleway,sans-serif;font-weight:700;';
+        fallback.innerHTML = '<span>Project media will appear here when the file is added.</span>';
+        img.replaceWith(fallback);
+      });
+    });
+
+    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('projectModal'));
+    modal.show();
+  }
+
+  document.querySelectorAll('.project-tile').forEach(tile => {
+    tile.addEventListener('click', event => {
+      event.preventDefault();
+      showProject(tile.dataset.project);
+    });
+
+    tile.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        showProject(tile.dataset.project);
+      }
+    });
+  });
+
+  document.querySelectorAll('.project-media-item img, .project-media-item video').forEach(media => {
+    const item = media.closest('.project-media-item');
+    const markMissing = () => {
+      item.classList.add('media-missing');
+      media.remove();
+    };
+
+    if (media.tagName === 'IMG') {
+      media.addEventListener('load', () => item.classList.remove('media-missing'));
+      media.addEventListener('error', markMissing);
+      if (media.complete && media.naturalWidth === 0) markMissing();
+    } else {
+      media.addEventListener('loadedmetadata', () => item.classList.remove('media-missing'));
+      media.addEventListener('error', markMissing);
+      media.querySelectorAll('source').forEach(source => source.addEventListener('error', markMissing));
+    }
+  });
+</script>
+</body>
+</html>
